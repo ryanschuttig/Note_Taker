@@ -15,27 +15,24 @@ app.use(express.static("public"));
 
 // ROUTES HERE
 
-// require("./routes/index.html")(app);
-// require("./routes/notes.html")(app);
-
-app.post("/api/notes", (req, res) => {
-    const noteObj = req.body;
-
-    noteObj.id = uuidv1();
-
-
-
-
-})
-
-app.delete("/api/notes/:id", (req, res) => {
-    
-})
-
-
-
-
+require("./routes/htmlRoutes.js")(app);
+require("./routes/notesRoutes.js")(app);
 
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
 });
+
+// app.post("/api/notes", (req, res) => {
+//     const noteObj = req.body;
+
+//     noteObj.id = uuidv1();
+// })
+
+// app.delete("/api/notes/:id", (req, res) => {
+    
+// })
+
+
+
+
+
