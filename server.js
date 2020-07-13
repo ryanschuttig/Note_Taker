@@ -1,6 +1,5 @@
 // DEPENDENCIES
 const express = require("express");
-const uuidv1 = require("uuid/v1");
 
 // Tells node that we are creating an "express" server
 const app = express();
