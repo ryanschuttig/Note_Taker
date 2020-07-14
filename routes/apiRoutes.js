@@ -1,6 +1,6 @@
 // LOAD DATA
 const fs = require("fs");
-const {v1: uuidv1} = require("uuid");
+const { v1: uuidv1 } = require("uuid");
 
 module.exports = function (app) {
 
@@ -19,5 +19,17 @@ module.exports = function (app) {
         notesArray.push(noteObj);
         fs.writeFileSync(`${__dirname}/../db/db.json`, JSON.stringify(notesArray));
         res.send("Note successfully created!");
+    });
+
+    // API DELETE
+    app.delete("/api/notes/:id", (req, res) => {
+        let noteData = JSON.parse(fs.readFileSync(`${__dirname}/../db/db.json`, "utf8"));
+        const deletedNotes = noteData.filter(function (noteObj) {
+            return noteObj.id !== req.params.id;
+        })
+        fs.writeFileSync(`${__dirname}/../db/db.json`, JSON.stringify(deletedNotes));
+
+        res.json(deletedNotes);
+
     });
 }
